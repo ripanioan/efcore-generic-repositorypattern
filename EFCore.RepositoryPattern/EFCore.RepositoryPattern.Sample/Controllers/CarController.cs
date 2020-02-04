@@ -113,7 +113,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         {
             try
             {
-                await carService.UpdateAsync(car);
+                await carService.UpdateAsync(car, id);
 
                 return Ok(car);
             }

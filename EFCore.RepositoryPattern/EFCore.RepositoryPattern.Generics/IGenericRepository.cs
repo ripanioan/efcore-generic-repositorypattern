@@ -13,6 +13,8 @@ namespace EFCore.RepositoryPattern.Generics
         Task<TEntity> GetByIdAsync(TId id, CancellationToken cancellationToken = default);
         Task<IList<TEntity>> GetByIdsAsync(IEnumerable<TId> ids, CancellationToken cancellationToken = default);
 
+        Task UpdateAsync(TEntity entity, TId id, CancellationToken cancellationToken = default);
+
         Task DeleteAsync(TId id, CancellationToken cancellationToken = default);
         Task DeleteBulkAsync(IEnumerable<TId> ids, CancellationToken cancellationToken = default);
     }
