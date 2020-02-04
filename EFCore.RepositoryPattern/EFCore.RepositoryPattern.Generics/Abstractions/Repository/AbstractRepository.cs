@@ -16,7 +16,7 @@ namespace EFCore.RepositoryPattern.Generics.Abstractions.Repository
             this.dbContext = dbContext;
         }
 
-        public IQueryable<TEntity> GetQueryable()
+        public virtual IQueryable<TEntity> GetQueryable()
         {
             return dbContext.Set<TEntity>().AsNoTracking();
         }
@@ -70,7 +70,7 @@ namespace EFCore.RepositoryPattern.Generics.Abstractions.Repository
             _ = await dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<int> CountAsync(CancellationToken cancellationToken = default)
+        public virtual async Task<int> CountAsync(CancellationToken cancellationToken = default)
         {
             return await dbContext
                 .Set<TEntity>()
@@ -78,7 +78,7 @@ namespace EFCore.RepositoryPattern.Generics.Abstractions.Repository
                 .CountAsync(cancellationToken);
         }
 
-        public async Task<int> CountAsync(IQueryable<TEntity> query, CancellationToken cancellationToken = default)
+        public virtual async Task<int> CountAsync(IQueryable<TEntity> query, CancellationToken cancellationToken = default)
         {
             return await query.CountAsync(cancellationToken);
         }

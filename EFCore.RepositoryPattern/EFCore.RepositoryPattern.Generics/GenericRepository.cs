@@ -53,7 +53,7 @@ namespace EFCore.RepositoryPattern.Generics
             return result;
         }
 
-        public async Task UpdateAsync(TEntity entity, TId id, CancellationToken cancellationToken = default)
+        public virtual async Task UpdateAsync(TEntity entity, TId id, CancellationToken cancellationToken = default)
         {
             _ = await GetByIdAsync(id, cancellationToken);
 
