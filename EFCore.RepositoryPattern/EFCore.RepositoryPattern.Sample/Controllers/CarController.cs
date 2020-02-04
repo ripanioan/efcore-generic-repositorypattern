@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace EFCore.RepositoryPattern.Sample.Controllers
 {
     [ApiController]
+    [Route("api/v{version:apiVersion}")]
     [Produces("application/json")]
     public sealed class CarController : ControllerBase
     {
@@ -20,7 +21,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpGet]
-        [Route("api/v1/cars")]
+        [Route("cars")]
         public async Task<IActionResult> GetAllAsync()
         {
             try
@@ -36,7 +37,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpGet]
-        [Route("api/v1/cars/{id:guid}")]
+        [Route("cars/{id:guid}")]
         public async Task<IActionResult> GetByIdAsync([FromRoute] Guid id)
         {
             try
@@ -56,7 +57,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpGet]
-        [Route("api/v1/cars/ids")]
+        [Route("cars/ids")]
         public async Task<IActionResult> GetByIdsAsync([FromQuery] ICollection<Guid> ids)
         {
             try
@@ -76,7 +77,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpPost]
-        [Route("api/v1/cars")]
+        [Route("cars")]
         public async Task<IActionResult> CreateAsync([FromBody] Car car)
         {
             try
@@ -92,7 +93,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpPost]
-        [Route("api/v1/cars/import")]
+        [Route("cars/import")]
         public async Task<IActionResult> CreateBulkAsync([FromBody] ICollection<Car> cars)
         {
             try
@@ -108,7 +109,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpPut]
-        [Route("api/v1/cars/{id:guid}")]
+        [Route("cars/{id:guid}")]
         public async Task<IActionResult> UpdateAsync([FromBody] Car car, [FromRoute] Guid id)
         {
             try
@@ -128,7 +129,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpPut]
-        [Route("api/v1/cars")]
+        [Route("cars")]
         public async Task<IActionResult> UpdateBulkAsync([FromBody] ICollection<Car> cars)
         {
             try
@@ -148,7 +149,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpDelete]
-        [Route("api/v1/cars/{id:guid}")]
+        [Route("cars/{id:guid}")]
         public async Task<IActionResult> DeleteAsync([FromRoute] Guid id)
         {
             try
@@ -168,7 +169,7 @@ namespace EFCore.RepositoryPattern.Sample.Controllers
         }
 
         [HttpDelete]
-        [Route("api/v1/cars")]
+        [Route("cars")]
         public async Task<IActionResult> DeleteBulkAsync([FromQuery] ICollection<Guid> ids)
         {
             try

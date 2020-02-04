@@ -1,11 +1,14 @@
+using EFCore.RepositoryPattern.Sample.Configuration;
 using EFCore.RepositoryPattern.Sample.Data;
 using EFCore.RepositoryPattern.Sample.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace EFCore.RepositoryPattern.Sample
 {
@@ -29,6 +32,9 @@ namespace EFCore.RepositoryPattern.Sample
             services
                 .AddControllers()
                 .AddNewtonsoftJson();
+
+            services.AddApiVersioning();
+            services.AddSingleton<IConfigureOptions<ApiVersioningOptions>, ConfigureApiVersioningOptions>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
